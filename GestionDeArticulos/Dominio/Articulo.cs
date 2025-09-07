@@ -8,16 +8,15 @@ namespace Dominio
 {
     public class Articulo
     {
-        public int Id { get; set; }
+        public int IdArticulo { get; set; }
         public string CodigoArticulo { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public decimal Precio { get; set; }
+        public string NombreArticulo { get; set; }
+        public string DescripcionArticulo { get; set; }
+        public decimal PrecioArticulo { get; set; }
+        public int IdMarca { get; set; }
+        public int IdCategoria { get; set; }
         public Marca Marca { get; set; }
-
-        // Relaciones con otras clases a tener en cuenta a futro
-        
-        //public Categoria Categoria { get; set; }    
-        //public List <Imagen> Imagenes{ get; set; }
+        public Categoria Categoria { get; set; }            
+        public List <Imagen> ImagenUrl { get; set; }
     }
 }
