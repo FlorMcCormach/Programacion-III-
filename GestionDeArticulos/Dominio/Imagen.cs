@@ -11,6 +11,6 @@ namespace Dominio
         public int IdImagen { get; set; }
         public int IdArticulo { get; set; }
         public string ImagenUrl { get; set; }
-        public Articulo Articulo { get; set; }
+       
     }
 }
