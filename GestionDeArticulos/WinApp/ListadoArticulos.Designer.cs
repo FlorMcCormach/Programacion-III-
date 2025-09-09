@@ -60,6 +60,7 @@
             this.Controls.Add(this.dgvListadoArticulo);
             this.Name = "ListadoArticulos";
             this.Text = "ListadoArticulos";
+            this.Load += new System.EventHandler(this.ListadoArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListadoArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

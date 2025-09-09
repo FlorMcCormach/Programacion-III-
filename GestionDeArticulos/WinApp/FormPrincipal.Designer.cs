@@ -44,6 +44,7 @@
             this.btnListadoArticulo.TabIndex = 0;
             this.btnListadoArticulo.Text = "Listado de Articulos";
             this.btnListadoArticulo.UseVisualStyleBackColor = true;
+            this.btnListadoArticulo.Click += new System.EventHandler(this.btnListadoArticulo_Click);
             // 
             // lblGesDeArticulos
             // 

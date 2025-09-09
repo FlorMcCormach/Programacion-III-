@@ -16,5 +16,11 @@ namespace WinApp
         {
             InitializeComponent();
         }
+
+        private void btnListadoArticulo_Click(object sender, EventArgs e)
+        {
+            ListadoArticulos ventana = new ListadoArticulos();
+            ventana.ShowDialog();
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace WinApp
 {
@@ -15,6 +16,12 @@ namespace WinApp
         public ListadoArticulos()
         {
             InitializeComponent();
+        }
+
+        private void ListadoArticulos_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvListadoArticulo.DataSource = negocio.listar();
         }
     }
 }
