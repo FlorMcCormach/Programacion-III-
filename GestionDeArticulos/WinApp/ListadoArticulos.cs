@@ -22,6 +22,7 @@ namespace WinApp
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             dgvListadoArticulo.DataSource = negocio.listar();
+            dgvListadoArticulo.Columns["IdArticulo"].Visible = false;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
