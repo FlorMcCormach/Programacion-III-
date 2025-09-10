@@ -23,5 +23,11 @@ namespace WinApp
             ArticuloNegocio negocio = new ArticuloNegocio();
             dgvListadoArticulo.DataSource = negocio.listar();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            AgregarArticulos modificarArticulos = new AgregarArticulos();  
+            modificarArticulos.ShowDialog();    
+        }
     }
 }

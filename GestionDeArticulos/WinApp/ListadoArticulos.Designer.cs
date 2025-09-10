@@ -30,14 +30,18 @@
         {
             this.dgvListadoArticulo = new System.Windows.Forms.DataGridView();
             this.lblListadoArticulo = new System.Windows.Forms.Label();
+            this.btnModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListadoArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvListadoArticulo
             // 
             this.dgvListadoArticulo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListadoArticulo.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvListadoArticulo.Location = new System.Drawing.Point(24, 90);
+            this.dgvListadoArticulo.MultiSelect = false;
             this.dgvListadoArticulo.Name = "dgvListadoArticulo";
+            this.dgvListadoArticulo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListadoArticulo.Size = new System.Drawing.Size(747, 330);
             this.dgvListadoArticulo.TabIndex = 0;
             // 
@@ -51,11 +55,22 @@
             this.lblListadoArticulo.TabIndex = 1;
             this.lblListadoArticulo.Text = "Listado de Articulo";
             // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(24, 447);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 2;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
             // ListadoArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 482);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.lblListadoArticulo);
             this.Controls.Add(this.dgvListadoArticulo);
             this.Name = "ListadoArticulos";
@@ -71,5 +86,6 @@
 
         private System.Windows.Forms.DataGridView dgvListadoArticulo;
         private System.Windows.Forms.Label lblListadoArticulo;
+        private System.Windows.Forms.Button btnModificar;
     }
 }
