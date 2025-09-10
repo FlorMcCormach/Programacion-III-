@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 using Negocio;
 
 namespace WinApp
@@ -27,7 +28,9 @@ namespace WinApp
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            AgregarArticulos modificarArticulos = new AgregarArticulos();  
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvListadoArticulo.CurrentRow.DataBoundItem;
+            AgregarArticulos modificarArticulos = new AgregarArticulos(seleccionado);  
             modificarArticulos.ShowDialog();    
         }
     }

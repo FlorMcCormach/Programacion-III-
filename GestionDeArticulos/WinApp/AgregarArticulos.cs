@@ -7,29 +7,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace WinApp
 {
     public partial class AgregarArticulos : Form
     {
+        private Articulo articulo = null;
         public AgregarArticulos()
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        public AgregarArticulos(Articulo articulo)
         {
-
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Artículo";
         }
+    
 
-        private void label1_Click_1(object sender, EventArgs e)
+        private void btAgregar_Click(object sender, EventArgs e)
         {
 
-        }
 
-        private void vsbMarca_Scroll(object sender, ScrollEventArgs e)
-        {
+            //consulta para saber si es una modificacion, caso contrario es un alta
+            if (articulo.IdArticulo > 0)
+            {
+                ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                int idArticulo;
+                articuloNegocio.modificar(articulo);
+                idArticulo = articulo.IdArticulo;
 
+            }
+            Close();
         }
     }
 }
