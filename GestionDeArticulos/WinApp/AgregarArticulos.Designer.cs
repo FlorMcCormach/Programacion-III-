@@ -67,7 +67,6 @@
             this.lblCodigo.TabIndex = 2;
             this.lblCodigo.Text = "Codigo ";
             this.lblCodigo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            //this.lblCodigo.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtbCodigo
             // 
@@ -127,7 +126,6 @@
             this.lblMarca.TabIndex = 7;
             this.lblMarca.Text = "Marca";
             this.lblMarca.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            //this.lblMarca.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // CboxMarca
             // 
@@ -234,7 +232,7 @@
             this.MinimumSize = new System.Drawing.Size(634, 489);
             this.Name = "AgregarArticulos";
             this.Text = "AgregarArticulos";
-            //this.Load += new System.EventHandler(this.AgregarArticulos_Load);
+            this.Load += new System.EventHandler(this.AgregarArticulos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
