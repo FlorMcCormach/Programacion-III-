@@ -34,6 +34,13 @@
             this.lblCategoria = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtMarca = new System.Windows.Forms.TextBox();
+            this.txtCategoria = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -96,11 +103,60 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Busqueda de Articulo";
             // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(121, 124);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(191, 20);
+            this.txtCodigo.TabIndex = 6;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(121, 153);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(191, 20);
+            this.txtNombre.TabIndex = 7;
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Location = new System.Drawing.Point(121, 183);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(191, 20);
+            this.txtMarca.TabIndex = 8;
+            // 
+            // txtCategoria
+            // 
+            this.txtCategoria.Location = new System.Drawing.Point(121, 213);
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Size = new System.Drawing.Size(191, 20);
+            this.txtCategoria.TabIndex = 9;
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(121, 241);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(191, 20);
+            this.txtPrecio.TabIndex = 10;
+            // 
+            // pbxArticulo
+            // 
+            this.pbxArticulo.Location = new System.Drawing.Point(430, 89);
+            this.pbxArticulo.Name = "pbxArticulo";
+            this.pbxArticulo.Size = new System.Drawing.Size(259, 283);
+            this.pbxArticulo.TabIndex = 11;
+            this.pbxArticulo.TabStop = false;
+            // 
             // BuscarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pbxArticulo);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.txtCategoria);
+            this.Controls.Add(this.txtMarca);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblCategoria);
@@ -111,6 +167,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar";
             this.Load += new System.EventHandler(this.BuscarProducto_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,5 +181,11 @@
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtMarca;
+        private System.Windows.Forms.TextBox txtCategoria;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.PictureBox pbxArticulo;
     }
 }
