@@ -57,8 +57,26 @@ namespace Negocio
 				AccesoDatos.cerrarConexion();
 			}
         }
-    
-		public void modificar(Articulo articulo)
+
+        public void buscarArticulo(Articulo articulo)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void modificar(Articulo articulo)
 		{
 			AccesoDatos accesoDatos = new AccesoDatos();
 			try
