@@ -19,6 +19,12 @@ namespace WinApp
 
         private void BuscarProducto_Load(object sender, EventArgs e)
         {
+            
+            txtCategoria.Text = "";
+            txtCodigo.Text = "";
+            txtMarca.Text = "";
+            txtNombre.Text = "";
+            txtPrecio.Text = "";
 
         }
     }
