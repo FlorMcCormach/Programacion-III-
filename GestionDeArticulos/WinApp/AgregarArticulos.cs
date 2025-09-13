@@ -29,6 +29,7 @@ namespace WinApp
 
         private void AgregarArticulos_Load(object sender, EventArgs e)
         {
+            
             try
             {
                 //si es modificacion, cargo los datos del articulo (falta cargar combo box´s) 

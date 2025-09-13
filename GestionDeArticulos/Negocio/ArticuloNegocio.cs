@@ -17,26 +17,11 @@ namespace Negocio
 
             try
 			{
-				//AccesoDatos.setearConsulta("select id, Codigo, Nombre,Descripcion, Precio from ARTICULOS");
-				//AccesoDatos.ejecutarConsulta();
-				//while (AccesoDatos.Lector.Read())
-				//{
-				//	Articulo aux = new Articulo();
-				//	aux.IdArticulo = (int)AccesoDatos.Lector["id"];
-				//	aux.CodigoArticulo = (string)AccesoDatos.Lector["Codigo"];
-				//	aux.NombreArticulo = (string)AccesoDatos.Lector["Nombre"];
-				//	aux.DescripcionArticulo = (string)AccesoDatos.Lector["Descripcion"];
-				//	aux.PrecioArticulo = (decimal)AccesoDatos.Lector["Precio"];
-
-				//	lista.Add(aux);
-				//}
-				//return lista;
-
-
-
-                AccesoDatos.setearConsulta("SELECT a.id AS IdArticulo, a.Codigo AS CodigoArticulo, a.Nombre AS NombreArticulo, a.Descripcion AS DescripcionArticulo, m.Descripcion AS DescripcionMarca, c.Descripcion AS DescripcionCategoria, a.Precio AS PrecioArticulo FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id;");
+				
+				AccesoDatos.setearConsulta("SELECT a.id AS IdArticulo, a.Codigo AS CodigoArticulo, a.Nombre AS NombreArticulo, a.Descripcion AS DescripcionArticulo, m.Descripcion AS DescripcionMarca, c.Descripcion AS DescripcionCategoria, a.Precio AS PrecioArticulo FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id;");
                 AccesoDatos.ejecutarConsulta();
-                while (AccesoDatos.Lector.Read())
+              
+				while (AccesoDatos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
                     aux.IdArticulo = (int)AccesoDatos.Lector["IdArticulo"];
