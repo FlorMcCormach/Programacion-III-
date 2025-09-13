@@ -83,7 +83,7 @@ namespace Negocio
 			}
 			finally
 			{
-				datos.cerrarConexion();
+                accesoDatos.cerrarConexion();
 			}
         }
     }

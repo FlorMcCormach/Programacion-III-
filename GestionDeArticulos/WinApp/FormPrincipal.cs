@@ -22,5 +22,11 @@ namespace WinApp
             ListadoArticulos ventana = new ListadoArticulos();
             ventana.ShowDialog();
         }
+
+        private void btnBuscarArticulo_Click(object sender, EventArgs e)
+        {
+            BuscarProducto ventanaBuscarProducto = new BuscarProducto();
+            ventanaBuscarProducto.ShowDialog();
+        }
     }
 }

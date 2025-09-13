@@ -67,6 +67,7 @@
             this.btnBuscarArticulo.TabIndex = 2;
             this.btnBuscarArticulo.Text = "Buscar Articulo";
             this.btnBuscarArticulo.UseVisualStyleBackColor = true;
+            this.btnBuscarArticulo.Click += new System.EventHandler(this.btnBuscarArticulo_Click);
             // 
             // FormPrincipal
             // 
