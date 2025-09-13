@@ -159,6 +159,7 @@
             this.pbxArticulo.Location = new System.Drawing.Point(430, 89);
             this.pbxArticulo.Name = "pbxArticulo";
             this.pbxArticulo.Size = new System.Drawing.Size(358, 330);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulo.TabIndex = 11;
             this.pbxArticulo.TabStop = false;
             // 
@@ -198,6 +199,7 @@
             this.dgvBuscar.Name = "dgvBuscar";
             this.dgvBuscar.Size = new System.Drawing.Size(759, 150);
             this.dgvBuscar.TabIndex = 16;
+            this.dgvBuscar.SelectionChanged += new System.EventHandler(this.dgvBuscar_SelectionChanged);
             // 
             // BuscarProducto
             // 

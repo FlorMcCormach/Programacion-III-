@@ -38,6 +38,37 @@ namespace WinApp
             this.Close();
         }
 
+        private void CargarImagenArticulo(Articulo articulo)
+        {
+            if (articulo.Imagenes != null && articulo.Imagenes.Count > 1) // valido que tenga al menos 2 imágenes
+            {
+                try
+                {
+                    pbxArticulo.Load(articulo.Imagenes[1].ImagenUrl); // Segunda imagen
+                }
+                catch (Exception )
+                {
+                    pbxArticulo.Load("https://dummyimage.com/400x400/cccccc/666666.png?text=Sin+Imagen");
+                }
+            }
+            else if (articulo.Imagenes != null && articulo.Imagenes.Count > 0) // si solo tiene una imagen
+            {
+                try
+                {
+                    pbxArticulo.Load(articulo.Imagenes[0].ImagenUrl); // Primera imagen
+                }
+                catch (Exception )
+                {
+                    pbxArticulo.Load("https://dummyimage.com/400x400/cccccc/666666.png?text=Sin+Imagen");
+                }
+            }
+            else
+            {
+                pbxArticulo.Load("https://dummyimage.com/400x400/cccccc/666666.png?text=Sin+Imagen");
+            }
+        }
+
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -77,10 +108,11 @@ namespace WinApp
                 listaArticulo = negocio.buscarArticulo(articulo);
                 dgvBuscar.DataSource = listaArticulo;
                 // Verificar que hay artículos y que tienen imágenes
-                if (listaArticulo.Count > 0 && listaArticulo[0].Imagenes != null && listaArticulo[0].Imagenes.Count > 0)
+                if (listaArticulo.Count > 0)
                 {
-                    pbxArticulo.Load(listaArticulo[0].Imagenes[0].ImagenUrl);
-                }else
+                    CargarImagenArticulo(listaArticulo[0]);
+                }
+                else
                 {
                     // Limpiar la imagen cuando no hay imágenes disponibles
                     pbxArticulo.Image = null;
@@ -92,5 +124,13 @@ namespace WinApp
                 //throw ex;
             }
         }
+
+        private void dgvBuscar_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo selecionado = (Articulo)dgvBuscar.CurrentRow.DataBoundItem;
+            CargarImagenArticulo(selecionado);
+        }
+
+
     }
 }
