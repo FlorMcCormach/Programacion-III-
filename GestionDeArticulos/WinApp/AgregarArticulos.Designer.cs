@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btAgregar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtbCodigo = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -42,18 +42,19 @@
             this.txtbNombre = new System.Windows.Forms.TextBox();
             this.txtbDescripcion = new System.Windows.Forms.TextBox();
             this.txtbPrecio = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btAgregar
+            // btnAceptar
             // 
-            this.btAgregar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btAgregar.Location = new System.Drawing.Point(474, 254);
-            this.btAgregar.Name = "btAgregar";
-            this.btAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btAgregar.TabIndex = 0;
-            this.btAgregar.Text = "Agregar";
-            this.btAgregar.UseVisualStyleBackColor = false;
-            this.btAgregar.Click += new System.EventHandler(this.btAgregar_Click);
+            this.btnAceptar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAceptar.Location = new System.Drawing.Point(474, 254);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 0;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btAgregar_Click);
             // 
             // lblCodigo
             // 
@@ -210,11 +211,23 @@
             this.txtbPrecio.Size = new System.Drawing.Size(262, 20);
             this.txtbPrecio.TabIndex = 14;
             // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnClose.Location = new System.Drawing.Point(567, 254);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 15;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // AgregarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtbPrecio);
             this.Controls.Add(this.txtbDescripcion);
             this.Controls.Add(this.txtbNombre);
@@ -228,7 +241,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtbCodigo);
             this.Controls.Add(this.lblCodigo);
-            this.Controls.Add(this.btAgregar);
+            this.Controls.Add(this.btnAceptar);
             this.MinimumSize = new System.Drawing.Size(634, 489);
             this.Name = "AgregarArticulos";
             this.Text = "AgregarArticulos";
@@ -240,7 +253,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btAgregar;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.TextBox txtbCodigo;
         private System.Windows.Forms.Label lblNombre;
@@ -254,5 +267,6 @@
         private System.Windows.Forms.TextBox txtbNombre;
         private System.Windows.Forms.TextBox txtbDescripcion;
         private System.Windows.Forms.TextBox txtbPrecio;
+        private System.Windows.Forms.Button btnClose;
     }
 }

@@ -60,19 +60,22 @@ namespace Negocio
     
 		public void modificar(Articulo articulo)
 		{
-			AccesoDatos datos = new AccesoDatos();
+			AccesoDatos accesoDatos = new AccesoDatos();
 			try
 			{
-				datos.setearConsulta("UPDATE ARTICULOS SET Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio WHERE Id = @Id");
+				accesoDatos.setearConsulta("UPDATE ARTICULOS SET Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio WHERE Id = @Id");
 
-				datos.setearParametros("@Codigo", articulo.CodigoArticulo);
-				datos.setearParametros("@Nombre", articulo.NombreArticulo);
-				datos.setearParametros("@Descripcion", articulo.DescripcionArticulo);
-				datos.setearParametros("@Precio", articulo.PrecioArticulo);
-				datos.setearParametros("@Id", articulo.IdArticulo);
+				accesoDatos.setearParametros("@Codigo", articulo.CodigoArticulo);
+				accesoDatos.setearParametros("@Nombre", articulo.NombreArticulo);
+				accesoDatos.setearParametros("@Descripcion", articulo.DescripcionArticulo);
+				accesoDatos.setearParametros("@Precio", articulo.PrecioArticulo);
+				accesoDatos.setearParametros("@Id", articulo.IdArticulo);
+
+				accesoDatos.setearParametros("@IdMarca", articulo.Marca.IdMarca);
+				accesoDatos.setearParametros("@IdCategoria", articulo.Categoria.IdCategoria);
 
 
-                datos.cerrarConexion();
+                accesoDatos.cerrarConexion();
             }
 			catch (Exception ex)
 			{
