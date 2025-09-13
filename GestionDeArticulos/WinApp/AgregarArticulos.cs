@@ -60,43 +60,48 @@ namespace WinApp
             }
         }
 
-        private void btAgregar_Click(object sender, EventArgs e)
-        {
-
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-
-            try
-            {
-                if(articulo == null)
-                    articulo = new Articulo();
-
-
-                //consulta para saber si es una modificacion, caso contrario es un alta
-                if (articulo.IdArticulo > 0)
-                {
-                    int idArticulo;
-                    articuloNegocio.modificar(articulo);
-                    idArticulo = articulo.IdArticulo;
-
-                }
-                else 
-                { 
-                   //si es 0 es un alta
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            
-            Close();
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+           
+            try
+            {
+                if (articulo == null)
+                    articulo = new Articulo();
+
+                articulo.CodigoArticulo = txtbCodigo.Text;
+                articulo.NombreArticulo = txtbNombre.Text;
+                articulo.DescripcionArticulo = txtbDescripcion.Text;
+                articulo.PrecioArticulo = decimal.Parse(txtbPrecio.Text);
+                articulo.Marca = (Marca)cboxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
+
+                //consulta para saber si es una modificacion, caso contrario es un alta
+                if (articulo.IdArticulo > 0)
+                {
+                    articuloNegocio.modificar(articulo);                 
+
+                }
+                else
+                {
+                    //si es 0 es un alta
+                }
+
+                Close();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }
+

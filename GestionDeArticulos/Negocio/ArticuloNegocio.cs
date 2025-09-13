@@ -75,7 +75,7 @@ namespace Negocio
 				accesoDatos.setearParametros("@IdCategoria", articulo.Categoria.IdCategoria);
 
 
-                accesoDatos.cerrarConexion();
+				accesoDatos.ejecutarConsulta();
             }
 			catch (Exception ex)
 			{
