@@ -33,5 +33,10 @@ namespace WinApp
             AgregarArticulos modificarArticulos = new AgregarArticulos(seleccionado);  
             modificarArticulos.ShowDialog();    
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -83,7 +83,7 @@ namespace WinApp
                 articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
 
                 //consulta para saber si es una modificacion, caso contrario es un alta
-                if (articulo.IdArticulo > 0)
+                if (articulo.IdArticulo != 0)
                 {
                     articuloNegocio.modificar(articulo);                 
 
