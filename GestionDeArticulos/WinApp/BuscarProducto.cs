@@ -70,6 +70,7 @@ namespace WinApp
                     MessageBox.Show("Precio no es válido. Ingresá un precio.");
                 }
 
+                // se carga el DGV y con el buscarArticulo se realiza la fintracion por distintos criterios
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 dgvBuscar.DataSource = negocio.buscarArticulo(articulo);
             }

@@ -94,6 +94,29 @@ namespace Negocio
                     accesoDatos.setearParametros("@DescripcionCategoria", "%" + articulo.Categoria.DescripcionCategoria + "%");
                     primerFiltro = false;
                 }
+                if (!string.IsNullOrWhiteSpace(articulo.NombreArticulo))
+                {
+                    consulta += primerFiltro ? "WHERE " : "AND ";
+                    consulta += "a.Nombre LIKE @Nombre ";
+                    accesoDatos.setearParametros("@Nombre", "%" + articulo.NombreArticulo + "%");
+                    primerFiltro = false;
+                }
+
+                if (!string.IsNullOrWhiteSpace(articulo.Marca?.MarcaDescripcion))
+                {
+                    consulta += primerFiltro ? "WHERE " : "AND ";
+                    consulta += "m.Descripcion LIKE @DescripcionMarca ";
+                    accesoDatos.setearParametros("@DescripcionMarca", "%" + articulo.Marca.MarcaDescripcion + "%");
+                    primerFiltro = false;
+                }
+                if (articulo.PrecioArticulo > 0)
+                {
+                    consulta += primerFiltro ? "WHERE " : "AND ";
+                    consulta += "a.Precio = @Precio ";
+                    accesoDatos.setearParametros("@Precio", articulo.PrecioArticulo );
+                    primerFiltro = false;
+                }
+
 
                 accesoDatos.setearConsulta(consulta);
                 accesoDatos.ejecutarConsulta();
