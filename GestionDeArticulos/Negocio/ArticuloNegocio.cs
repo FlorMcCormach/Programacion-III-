@@ -74,13 +74,14 @@ namespace Negocio
                     throw new ArgumentException("Debe ingresar al menos un filtro de búsqueda.");
                 }
 
-                string consulta ="SELECT a.Id AS IdArticulo, a.Codigo AS CodigoArticulo, a.Nombre AS NombreArticulo, a.Descripcion AS DescripcionArticulo, a.IdMarca, m.Descripcion AS DescripcionMarca, a.IdCategoria, c.Descripcion AS DescripcionCategoria, a.Precio AS PrecioArticulo FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id ";  // de esta manera se pueden agregar AND dinámicamente
+               //string consulta ="SELECT a.Id AS IdArticulo, a.Codigo AS CodigoArticulo, a.Nombre AS NombreArticulo, a.Descripcion AS DescripcionArticulo, a.IdMarca, m.Descripcion AS DescripcionMarca, a.IdCategoria, c.Descripcion AS DescripcionCategoria, a.Precio AS PrecioArticulo FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id ";  // de esta manera se pueden agregar AND dinámicamente
+                string consulta = "SELECT a.Id AS IdArticulo, a.Codigo AS CodigoArticulo, a.Nombre AS NombreArticulo, a.Descripcion AS DescripcionArticulo, a.IdMarca, m.Descripcion AS DescripcionMarca, a.IdCategoria, c.Descripcion AS DescripcionCategoria, a.Precio AS PrecioArticulo, i.ImagenUrl FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id LEFT JOIN IMAGENES i ON a.Id = i.IdArticulo";
 
                 bool primerFiltro = true;
 
                 if (!string.IsNullOrWhiteSpace(articulo.CodigoArticulo))
                 {
-                    consulta += primerFiltro ? "WHERE " : "AND ";
+                    consulta += primerFiltro ? " WHERE " : " AND ";
                     consulta += "a.Codigo = @CodArticulo ";
                     accesoDatos.setearParametros("@CodArticulo", articulo.CodigoArticulo);
                     primerFiltro = false;
@@ -89,14 +90,14 @@ namespace Negocio
                 // uso el operador ? para validar que categoria no sea null y poder acceder a descripcionCategoria
                 if (!string.IsNullOrWhiteSpace(articulo.Categoria?.DescripcionCategoria))
                 {
-                    consulta += primerFiltro ? "WHERE " : "AND ";
+                    consulta += primerFiltro ? " WHERE " : " AND ";
                     consulta += "c.Descripcion LIKE @DescripcionCategoria ";
                     accesoDatos.setearParametros("@DescripcionCategoria", "%" + articulo.Categoria.DescripcionCategoria + "%");
                     primerFiltro = false;
                 }
                 if (!string.IsNullOrWhiteSpace(articulo.NombreArticulo))
                 {
-                    consulta += primerFiltro ? "WHERE " : "AND ";
+                    consulta += primerFiltro ? " WHERE " : " AND ";
                     consulta += "a.Nombre LIKE @Nombre ";
                     accesoDatos.setearParametros("@Nombre", "%" + articulo.NombreArticulo + "%");
                     primerFiltro = false;
@@ -104,14 +105,14 @@ namespace Negocio
 
                 if (!string.IsNullOrWhiteSpace(articulo.Marca?.MarcaDescripcion))
                 {
-                    consulta += primerFiltro ? "WHERE " : "AND ";
+                    consulta += primerFiltro ? " WHERE " : " AND ";
                     consulta += "m.Descripcion LIKE @DescripcionMarca ";
                     accesoDatos.setearParametros("@DescripcionMarca", "%" + articulo.Marca.MarcaDescripcion + "%");
                     primerFiltro = false;
                 }
                 if (articulo.PrecioArticulo > 0)
                 {
-                    consulta += primerFiltro ? "WHERE " : "AND ";
+                    consulta += primerFiltro ? " WHERE " : " AND ";
                     consulta += "a.Precio = @Precio ";
                     accesoDatos.setearParametros("@Precio", articulo.PrecioArticulo );
                     primerFiltro = false;
@@ -121,25 +122,51 @@ namespace Negocio
                 accesoDatos.setearConsulta(consulta);
                 accesoDatos.ejecutarConsulta();
 
+                // leo la consulta y la guardo en una lista
+                // creo un diccionario por que resulta que un articulo puede tener mas de una imagen
+                Dictionary<int, Articulo> dictArticulos = new Dictionary<int, Articulo>();
                 while (accesoDatos.Lector.Read())
                 {
-                    Articulo aux = new Articulo();
-                    aux.IdArticulo = (int)accesoDatos.Lector["IdArticulo"];
-                    aux.CodigoArticulo = (string)accesoDatos.Lector["CodigoArticulo"];
-                    aux.NombreArticulo = (string)accesoDatos.Lector["NombreArticulo"];
-                    aux.DescripcionArticulo = (string)accesoDatos.Lector["DescripcionArticulo"];
-                    aux.PrecioArticulo = (decimal)accesoDatos.Lector["PrecioArticulo"];
+                    int idArticulo = (int)accesoDatos.Lector["IdArticulo"];
+                    Articulo aux;
+                    if (!dictArticulos.ContainsKey(idArticulo))
+                    {
+                        aux = new Articulo();
+                        aux.IdArticulo = idArticulo;
+                        aux.CodigoArticulo = (string)accesoDatos.Lector["CodigoArticulo"];
+                        aux.NombreArticulo = (string)accesoDatos.Lector["NombreArticulo"];
+                        aux.DescripcionArticulo = (string)accesoDatos.Lector["DescripcionArticulo"];
+                        aux.PrecioArticulo = (decimal)accesoDatos.Lector["PrecioArticulo"];
+                        aux.Marca = new Marca();
+                        aux.Marca.IdMarca = (int)accesoDatos.Lector["IdMarca"];
+                        aux.Marca.MarcaDescripcion = (string)accesoDatos.Lector["DescripcionMarca"];
+                        aux.Categoria = new Categoria();
+                        aux.Categoria.IdCategoria = (int)accesoDatos.Lector["IdCategoria"];
+                        aux.Categoria.DescripcionCategoria = (string)accesoDatos.Lector["DescripcionCategoria"];
 
-                    aux.Marca = new Marca();
-                    aux.Marca.IdMarca = (int)accesoDatos.Lector["IdMarca"];
-                    aux.Marca.MarcaDescripcion = (string)accesoDatos.Lector["DescripcionMarca"];
+                        aux.Imagenes = new List<Imagen>();
+                        
 
-                    aux.Categoria = new Categoria();
-                    aux.Categoria.IdCategoria = (int)accesoDatos.Lector["IdCategoria"];
-                    aux.Categoria.DescripcionCategoria = (string)accesoDatos.Lector["DescripcionCategoria"];
+                        dictArticulos.Add(idArticulo, aux); // al diccionario agrego  el articulo completo
+                    }
+                    else
+                    {
+                        aux = dictArticulos[idArticulo]; // si ya existe recupero el articulo completo 
+                    }
 
-                    lista.Add(aux);
+                    if (!accesoDatos.Lector.IsDBNull(accesoDatos.Lector.GetOrdinal("ImagenUrl")))
+
+                    {
+                        Imagen auxImagen = new Imagen();
+                        auxImagen.IdArticulo = idArticulo;
+                        auxImagen.ImagenUrl = accesoDatos.Lector["ImagenUrl"].ToString();
+
+                        
+                        aux.Imagenes.Add(auxImagen); 
+                    }
                 }
+
+                lista = dictArticulos.Values.ToList();
                 return lista;
             }
             catch (Exception ex)

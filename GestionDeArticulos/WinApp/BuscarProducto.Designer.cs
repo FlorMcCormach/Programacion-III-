@@ -194,9 +194,9 @@
             // 
             this.dgvBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBuscar.Location = new System.Drawing.Point(56, 443);
+            this.dgvBuscar.Location = new System.Drawing.Point(29, 438);
             this.dgvBuscar.Name = "dgvBuscar";
-            this.dgvBuscar.Size = new System.Drawing.Size(732, 150);
+            this.dgvBuscar.Size = new System.Drawing.Size(759, 150);
             this.dgvBuscar.TabIndex = 16;
             // 
             // BuscarProducto

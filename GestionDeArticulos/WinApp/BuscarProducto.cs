@@ -12,8 +12,10 @@ using Negocio;
 
 namespace WinApp
 {
+    
     public partial class BuscarProducto : Form
     {
+        private List<Articulo> listaArticulo;
         public BuscarProducto()
         {
             InitializeComponent();
@@ -72,7 +74,17 @@ namespace WinApp
 
                 // se carga el DGV y con el buscarArticulo se realiza la fintracion por distintos criterios
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                dgvBuscar.DataSource = negocio.buscarArticulo(articulo);
+                listaArticulo = negocio.buscarArticulo(articulo);
+                dgvBuscar.DataSource = listaArticulo;
+                // Verificar que hay artículos y que tienen imágenes
+                if (listaArticulo.Count > 0 && listaArticulo[0].Imagenes != null && listaArticulo[0].Imagenes.Count > 0)
+                {
+                    pbxArticulo.Load(listaArticulo[0].Imagenes[0].ImagenUrl);
+                }else
+                {
+                    // Limpiar la imagen cuando no hay imágenes disponibles
+                    pbxArticulo.Image = null;
+                }
             }
             catch (Exception ex)
             {
