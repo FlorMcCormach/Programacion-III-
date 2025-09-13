@@ -27,6 +27,7 @@ namespace WinApp
             txtMarca.Text = "";
             txtNombre.Text = "";
             txtPrecio.Text = "";
+            
 
         }
 
@@ -54,16 +55,23 @@ namespace WinApp
 
                 // se realiza la conversion a decimal
                 decimal precio;
-                if (decimal.TryParse(txtPrecio.Text, out precio))
+                if (string.IsNullOrWhiteSpace(txtPrecio.Text))
+                {
+                    precio = 0;
+                    articulo.PrecioArticulo = precio;
+                }
+                else if (decimal.TryParse(txtPrecio.Text, out precio))
                 {
                     articulo.PrecioArticulo = precio;
-                }else
+                }
+                
+                else
                 {
                     MessageBox.Show("Precio no es válido. Ingresá un precio.");
                 }
-                // la logica se encuentra en Articulos negocio, en el metodo "Busacar Articulo"
-               //Falta desarrollar la logia por eso la dejo comentada
-                // articuloNegocio.buscarArticulo(articulo);
+
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                dgvBuscar.DataSource = negocio.buscarArticulo(articulo);
             }
             catch (Exception ex)
             {

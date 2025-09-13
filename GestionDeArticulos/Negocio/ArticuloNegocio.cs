@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -58,12 +59,65 @@ namespace Negocio
 			}
         }
 
-        public void buscarArticulo(Articulo articulo)
+        public List<Articulo> buscarArticulo(Articulo articulo)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
+            List<Articulo> lista = new List<Articulo>();
+
             try
             {
+                // Validar que al menos haya un filtro
+                bool tieneFiltros =!string.IsNullOrWhiteSpace(articulo.NombreArticulo) || !string.IsNullOrWhiteSpace(articulo.Marca.MarcaDescripcion) ||!string.IsNullOrWhiteSpace(articulo.Categoria.DescripcionCategoria) || !string.IsNullOrWhiteSpace(articulo.CodigoArticulo) || articulo.PrecioArticulo > 0;
 
+                if (!tieneFiltros)
+                {
+                    throw new ArgumentException("Debe ingresar al menos un filtro de búsqueda.");
+                }
+
+                string consulta ="SELECT a.Id AS IdArticulo, a.Codigo AS CodigoArticulo, a.Nombre AS NombreArticulo, a.Descripcion AS DescripcionArticulo, a.IdMarca, m.Descripcion AS DescripcionMarca, a.IdCategoria, c.Descripcion AS DescripcionCategoria, a.Precio AS PrecioArticulo FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id ";  // de esta manera se pueden agregar AND dinámicamente
+
+                bool primerFiltro = true;
+
+                if (!string.IsNullOrWhiteSpace(articulo.CodigoArticulo))
+                {
+                    consulta += primerFiltro ? "WHERE " : "AND ";
+                    consulta += "a.Codigo = @CodArticulo ";
+                    accesoDatos.setearParametros("@CodArticulo", articulo.CodigoArticulo);
+                    primerFiltro = false;
+                }
+
+                // uso el operador ? para validar que categoria no sea null y poder acceder a descripcionCategoria
+                if (!string.IsNullOrWhiteSpace(articulo.Categoria?.DescripcionCategoria))
+                {
+                    consulta += primerFiltro ? "WHERE " : "AND ";
+                    consulta += "c.Descripcion LIKE @DescripcionCategoria ";
+                    accesoDatos.setearParametros("@DescripcionCategoria", "%" + articulo.Categoria.DescripcionCategoria + "%");
+                    primerFiltro = false;
+                }
+
+                accesoDatos.setearConsulta(consulta);
+                accesoDatos.ejecutarConsulta();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.IdArticulo = (int)accesoDatos.Lector["IdArticulo"];
+                    aux.CodigoArticulo = (string)accesoDatos.Lector["CodigoArticulo"];
+                    aux.NombreArticulo = (string)accesoDatos.Lector["NombreArticulo"];
+                    aux.DescripcionArticulo = (string)accesoDatos.Lector["DescripcionArticulo"];
+                    aux.PrecioArticulo = (decimal)accesoDatos.Lector["PrecioArticulo"];
+
+                    aux.Marca = new Marca();
+                    aux.Marca.IdMarca = (int)accesoDatos.Lector["IdMarca"];
+                    aux.Marca.MarcaDescripcion = (string)accesoDatos.Lector["DescripcionMarca"];
+
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.IdCategoria = (int)accesoDatos.Lector["IdCategoria"];
+                    aux.Categoria.DescripcionCategoria = (string)accesoDatos.Lector["DescripcionCategoria"];
+
+                    lista.Add(aux);
+                }
+                return lista;
             }
             catch (Exception ex)
             {

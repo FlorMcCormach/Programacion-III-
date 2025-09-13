@@ -42,7 +42,9 @@
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.dgvBuscar = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBuscar)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -174,11 +176,20 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // dgvBuscar
+            // 
+            this.dgvBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBuscar.Location = new System.Drawing.Point(56, 443);
+            this.dgvBuscar.Name = "dgvBuscar";
+            this.dgvBuscar.Size = new System.Drawing.Size(633, 150);
+            this.dgvBuscar.TabIndex = 16;
+            // 
             // BuscarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.dgvBuscar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.pbxArticulo);
@@ -198,6 +209,7 @@
             this.Text = "Buscar";
             this.Load += new System.EventHandler(this.BuscarProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBuscar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +231,6 @@
         private System.Windows.Forms.PictureBox pbxArticulo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.DataGridView dgvBuscar;
     }
 }
