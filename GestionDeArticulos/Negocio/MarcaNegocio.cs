@@ -7,22 +7,22 @@ using Dominio;
 
 namespace Negocio
 {
-    public class CategoriaNegocio
+    public class MarcaNegocio
     {
-        public List<Categoria> listar()
+        public List<Marca> listar()
         {
-            List<Categoria> lista = new List<Categoria>();
+            List<Marca> lista = new List<Marca>();
             AccesoDatos AccesoDatos = new AccesoDatos();
             try
             {
-                AccesoDatos.setearConsulta("SELECT Id, Descripcion FROM CATEGORIAS");
+                AccesoDatos.setearConsulta("SELECT Id, Descripcion FROM MARCAS");
                 AccesoDatos.ejecutarConsulta();
 
                 while (AccesoDatos.Lector.Read())
                 {
-                    Categoria aux = new Categoria();
-                    aux.IdCategoria = (int)AccesoDatos.Lector["Id"];
-                    aux.DescripcionCategoria = (string)AccesoDatos.Lector["Descripcion"];
+                    Marca aux = new Marca();
+                    aux.IdMarca = (int)AccesoDatos.Lector["Id"];
+                    aux.MarcaDescripcion = (string)AccesoDatos.Lector["Descripcion"];
                     lista.Add(aux);
                 }
                 return lista;            
