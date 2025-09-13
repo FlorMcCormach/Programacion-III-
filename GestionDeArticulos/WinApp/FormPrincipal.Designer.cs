@@ -31,6 +31,7 @@
             this.btnListadoArticulo = new System.Windows.Forms.Button();
             this.lblGesDeArticulos = new System.Windows.Forms.Label();
             this.btnBuscarArticulo = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnListadoArticulo
@@ -38,7 +39,7 @@
             this.btnListadoArticulo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnListadoArticulo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
             this.btnListadoArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListadoArticulo.Location = new System.Drawing.Point(226, 127);
+            this.btnListadoArticulo.Location = new System.Drawing.Point(226, 116);
             this.btnListadoArticulo.Name = "btnListadoArticulo";
             this.btnListadoArticulo.Size = new System.Drawing.Size(117, 37);
             this.btnListadoArticulo.TabIndex = 0;
@@ -61,18 +62,32 @@
             this.btnBuscarArticulo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnBuscarArticulo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
             this.btnBuscarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarArticulo.Location = new System.Drawing.Point(226, 181);
+            this.btnBuscarArticulo.Location = new System.Drawing.Point(226, 170);
             this.btnBuscarArticulo.Name = "btnBuscarArticulo";
             this.btnBuscarArticulo.Size = new System.Drawing.Size(117, 32);
             this.btnBuscarArticulo.TabIndex = 2;
             this.btnBuscarArticulo.Text = "Buscar Articulo";
             this.btnBuscarArticulo.UseVisualStyleBackColor = true;
+            this.btnBuscarArticulo.Click += new System.EventHandler(this.btnBuscarArticulo_Click);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(226, 219);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 37);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Agregar Articulo";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 574);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnBuscarArticulo);
             this.Controls.Add(this.lblGesDeArticulos);
             this.Controls.Add(this.btnListadoArticulo);
@@ -89,6 +104,7 @@
         private System.Windows.Forms.Button btnListadoArticulo;
         private System.Windows.Forms.Label lblGesDeArticulos;
         private System.Windows.Forms.Button btnBuscarArticulo;
+        private System.Windows.Forms.Button button1;
     }
 }
 

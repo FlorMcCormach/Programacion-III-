@@ -42,6 +42,8 @@
             this.txtbNombre = new System.Windows.Forms.TextBox();
             this.txtbDescripcion = new System.Windows.Forms.TextBox();
             this.txtbPrecio = new System.Windows.Forms.TextBox();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // btAgregar
@@ -210,11 +212,24 @@
             this.txtbPrecio.Size = new System.Drawing.Size(262, 20);
             this.txtbPrecio.TabIndex = 14;
             // 
+            // pictureBox
+            // 
+            this.pictureBox.BackColor = System.Drawing.SystemColors.InfoText;
+            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox.Location = new System.Drawing.Point(414, 34);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(154, 171);
+            this.pictureBox.TabIndex = 15;
+            this.pictureBox.TabStop = false;
+            // 
             // AgregarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.txtbPrecio);
             this.Controls.Add(this.txtbDescripcion);
             this.Controls.Add(this.txtbNombre);
@@ -233,6 +248,7 @@
             this.Name = "AgregarArticulos";
             this.Text = "AgregarArticulos";
             this.Load += new System.EventHandler(this.AgregarArticulos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,5 +270,6 @@
         private System.Windows.Forms.TextBox txtbNombre;
         private System.Windows.Forms.TextBox txtbDescripcion;
         private System.Windows.Forms.TextBox txtbPrecio;
+        private System.Windows.Forms.PictureBox pictureBox;
     }
 }
