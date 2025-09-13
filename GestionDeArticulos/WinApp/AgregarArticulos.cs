@@ -29,16 +29,29 @@ namespace WinApp
 
         private void AgregarArticulos_Load(object sender, EventArgs e)
         {
-            
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+
             try
             {
-                //si es modificacion, cargo los datos del articulo (falta cargar combo box´s) 
+                cboxCategoria.DataSource = categoriaNegocio.listar();
+                cboxCategoria.ValueMember = "IdCategoria";
+                cboxCategoria.DisplayMember = "DescripcionCategoria";
+
+                cboxMarca.DataSource = marcaNegocio.listar();
+                cboxMarca.ValueMember = "IdMarca";
+                cboxMarca.DisplayMember = "MarcaDescripcion";
+
+                //si es modificacion, cargo los datos del articulo 
                 if (articulo != null)
                 {
                     txtbCodigo.Text = articulo.CodigoArticulo;
                     txtbNombre.Text = articulo.NombreArticulo;
                     txtbDescripcion.Text = articulo.DescripcionArticulo;
                     txtbPrecio.Text = articulo.PrecioArticulo.ToString();
+
+                    cboxCategoria.SelectedValue = articulo.Categoria.IdCategoria;
+                    cboxMarca.SelectedValue = articulo.Marca.IdMarca;
                 }
             }
             catch (Exception ex)

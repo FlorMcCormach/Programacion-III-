@@ -12,17 +12,20 @@ namespace Negocio
         public List<Categoria> listar()
         {
             List<Categoria> lista = new List<Categoria>();
-            AccesoDatos AccesoDatos = new AccesoDatos();
+            AccesoDatos accesoDatos = new AccesoDatos();
             try
             {
-                AccesoDatos.setearConsulta("SELECT Id, Descripcion FROM CATEGORIAS");
-                AccesoDatos.ejecutarConsulta();
+                accesoDatos.setearConsulta("SELECT Id, Descripcion FROM CATEGORIAS");
+                accesoDatos.ejecutarConsulta();
 
-                while (AccesoDatos.Lector.Read())
+                while (accesoDatos.Lector.Read())
                 {
                     Categoria aux = new Categoria();
-                    aux.IdCategoria = (int)AccesoDatos.Lector["Id"];
-                    aux.DescripcionCategoria = (string)AccesoDatos.Lector["Descripcion"];
+                    aux.IdCategoria = (int)accesoDatos.Lector["Id"];
+
+                    if(!(accesoDatos.Lector["Descripcion"] is DBNull))
+                        aux.DescripcionCategoria = (string)accesoDatos.Lector["Descripcion"];
+
                     lista.Add(aux);
                 }
                 return lista;            
@@ -33,7 +36,7 @@ namespace Negocio
             }
             finally
             {
-                AccesoDatos.cerrarConexion();
+                accesoDatos.cerrarConexion();
             }
         }
     }
