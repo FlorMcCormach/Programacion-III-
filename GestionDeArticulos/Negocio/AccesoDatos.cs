@@ -40,10 +40,8 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-
         }
 
         public void ejecutarAccion()

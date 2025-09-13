@@ -35,10 +35,10 @@
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
-            this.CboxMarca = new System.Windows.Forms.ComboBox();
+            this.cboxMarca = new System.Windows.Forms.ComboBox();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.lblImagen = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboxCategoria = new System.Windows.Forms.ComboBox();
             this.txtbNombre = new System.Windows.Forms.TextBox();
             this.txtbDescripcion = new System.Windows.Forms.TextBox();
             this.txtbPrecio = new System.Windows.Forms.TextBox();
@@ -127,11 +127,11 @@
             this.lblMarca.Text = "Marca";
             this.lblMarca.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // CboxMarca
+            // cboxMarca
             // 
-            this.CboxMarca.AccessibleDescription = "marcas";
-            this.CboxMarca.FormattingEnabled = true;
-            this.CboxMarca.Items.AddRange(new object[] {
+            this.cboxMarca.AccessibleDescription = "marcas";
+            this.cboxMarca.FormattingEnabled = true;
+            this.cboxMarca.Items.AddRange(new object[] {
             "Samsung",
             "Iphone",
             "Tcl",
@@ -140,10 +140,10 @@
             "Alcatel",
             "Google",
             "Otros"});
-            this.CboxMarca.Location = new System.Drawing.Point(113, 153);
-            this.CboxMarca.Name = "CboxMarca";
-            this.CboxMarca.Size = new System.Drawing.Size(261, 21);
-            this.CboxMarca.TabIndex = 8;
+            this.cboxMarca.Location = new System.Drawing.Point(113, 153);
+            this.cboxMarca.Name = "cboxMarca";
+            this.cboxMarca.Size = new System.Drawing.Size(261, 21);
+            this.cboxMarca.TabIndex = 8;
             // 
             // lblCategoria
             // 
@@ -171,11 +171,11 @@
             this.lblImagen.Text = "Imagen";
             this.lblImagen.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // comboBox1
+            // cboxCategoria
             // 
-            this.comboBox1.AccessibleDescription = "marcas";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cboxCategoria.AccessibleDescription = "marcas";
+            this.cboxCategoria.FormattingEnabled = true;
+            this.cboxCategoria.Items.AddRange(new object[] {
             "Samsung",
             "Iphone",
             "Tcl",
@@ -184,10 +184,10 @@
             "Alcatel",
             "Google",
             "Otros"});
-            this.comboBox1.Location = new System.Drawing.Point(112, 184);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(262, 21);
-            this.comboBox1.TabIndex = 11;
+            this.cboxCategoria.Location = new System.Drawing.Point(112, 184);
+            this.cboxCategoria.Name = "cboxCategoria";
+            this.cboxCategoria.Size = new System.Drawing.Size(262, 21);
+            this.cboxCategoria.TabIndex = 11;
             // 
             // txtbNombre
             // 
@@ -218,10 +218,10 @@
             this.Controls.Add(this.txtbPrecio);
             this.Controls.Add(this.txtbDescripcion);
             this.Controls.Add(this.txtbNombre);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboxCategoria);
             this.Controls.Add(this.lblImagen);
             this.Controls.Add(this.lblCategoria);
-            this.Controls.Add(this.CboxMarca);
+            this.Controls.Add(this.cboxMarca);
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblDescripcion);
@@ -247,10 +247,10 @@
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label lblMarca;
-        private System.Windows.Forms.ComboBox CboxMarca;
+        private System.Windows.Forms.ComboBox cboxMarca;
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.Label lblImagen;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboxCategoria;
         private System.Windows.Forms.TextBox txtbNombre;
         private System.Windows.Forms.TextBox txtbDescripcion;
         private System.Windows.Forms.TextBox txtbPrecio;

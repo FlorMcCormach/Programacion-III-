@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Dominio;
 
 namespace Negocio
 {
@@ -18,7 +19,11 @@ namespace Negocio
             try
 			{
 				
-				AccesoDatos.setearConsulta("SELECT a.id AS IdArticulo, a.Codigo AS CodigoArticulo, a.Nombre AS NombreArticulo, a.Descripcion AS DescripcionArticulo, m.Descripcion AS DescripcionMarca, c.Descripcion AS DescripcionCategoria, a.Precio AS PrecioArticulo FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id;");
+				AccesoDatos.setearConsulta("SELECT a.Id AS IdArticulo, a.Codigo AS CodigoArticulo, a.Nombre AS NombreArticulo, a.Descripcion AS DescripcionArticulo, a.IdMarca, m.Descripcion AS DescripcionMarca, a.IdCategoria, c.Descripcion AS DescripcionCategoria, a.Precio AS PrecioArticulo FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id;");
+                //("SELECT a.id AS IdArticulo, a.Codigo AS CodigoArticulo, a.Nombre AS NombreArticulo, a.Descripcion AS DescripcionArticulo, m.Descripcion AS DescripcionMarca, c.Descripcion AS DescripcionCategoria, a.Precio AS PrecioArticulo FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id;");
+
+                
+
                 AccesoDatos.ejecutarConsulta();
               
 				while (AccesoDatos.Lector.Read())
@@ -28,11 +33,15 @@ namespace Negocio
                     aux.CodigoArticulo = (string)AccesoDatos.Lector["CodigoArticulo"];
                     aux.NombreArticulo = (string)AccesoDatos.Lector["NombreArticulo"];
                     aux.DescripcionArticulo = (string)AccesoDatos.Lector["DescripcionArticulo"];
-					aux.Marca = new Marca();
-					aux.Marca.MarcaDescripcion = (string)AccesoDatos.Lector["DescripcionMarca"];
-					aux.Categoria = new Categoria();
-					aux.Categoria.DescripcionCategoria = (string)AccesoDatos.Lector["DescripcionCategoria"];
 					aux.PrecioArticulo = (decimal)AccesoDatos.Lector["PrecioArticulo"];
+					
+					aux.Marca = new Marca();
+					aux.Marca.IdMarca = (int)AccesoDatos.Lector["IdMarca"];
+					aux.Marca.MarcaDescripcion = (string)AccesoDatos.Lector["DescripcionMarca"];
+
+					aux.Categoria = new Categoria();
+					aux.Categoria.IdCategoria = (int)AccesoDatos.Lector["IdCategoria"];
+					aux.Categoria.DescripcionCategoria = (string)AccesoDatos.Lector["DescripcionCategoria"];
 
                     lista.Add(aux);
                 }
