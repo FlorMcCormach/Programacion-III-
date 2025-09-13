@@ -53,8 +53,14 @@ namespace WinApp
                 articulo.NombreArticulo = txtNombre.Text;
 
                 // se realiza la conversion a decimal
-                articulo.PrecioArticulo = decimal.Parse(txtPrecio.Text);
-
+                decimal precio;
+                if (decimal.TryParse(txtPrecio.Text, out precio))
+                {
+                    articulo.PrecioArticulo = precio;
+                }else
+                {
+                    MessageBox.Show("Precio no es válido. Ingresá un precio.");
+                }
                 // la logica se encuentra en Articulos negocio, en el metodo "Busacar Articulo"
                //Falta desarrollar la logia por eso la dejo comentada
                 // articuloNegocio.buscarArticulo(articulo);
