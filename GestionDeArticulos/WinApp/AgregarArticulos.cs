@@ -15,11 +15,11 @@ namespace WinApp
     public partial class AgregarArticulos : Form
     {
         private Articulo articulo = null;
+        List<string>imagenesIngresasda = new List<string>();
         public AgregarArticulos()
         {
             InitializeComponent();
-
-
+            imagenesIngresasda = new List<string>();
         }
 
         public AgregarArticulos(Articulo articulo)
@@ -32,7 +32,7 @@ namespace WinApp
                 txtbDescripcion.Text = " ";
                 txtbNombre.Text = " ";
                 txtbPrecio.Text = "";
-                txtUrlImagen.Text = " ";
+             
             }
             else
             {
@@ -119,7 +119,7 @@ namespace WinApp
                 else
                 {
                     //si es 0 es un alta
-                    articuloNegocio.agregarConImagen(nuevoArticulo, txtUrlImagen.Text);
+                    articuloNegocio.agregarConImagen(nuevoArticulo, string.Empty);
                     MessageBox.Show("Agregado exitosamente");
                 }
 
@@ -130,6 +130,28 @@ namespace WinApp
             {
 
                 MessageBox.Show("Ocurrió un error: " + ex.Message);
+            }
+        }
+
+        private void txtbPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 48 && e.KeyChar <= 57) || ((int)Keys.Back == e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else { e.Handled = true; } 
+          
+        }
+
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+            using (Imagen agregarImagen = new Imagen())
+            {
+                if (agregarImagen.ShowDialog() == DialogResult.OK)
+                {
+                    string ruta = agregarImagen.ImagenIngresada;
+                    imagenesIngresasda.Add(ruta);
+                }
             }
         }
     }

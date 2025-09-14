@@ -36,7 +36,6 @@
             this.lblMarca = new System.Windows.Forms.Label();
             this.cboxMarca = new System.Windows.Forms.ComboBox();
             this.lblCategoria = new System.Windows.Forms.Label();
-            this.lblImagen = new System.Windows.Forms.Label();
             this.cboxCategoria = new System.Windows.Forms.ComboBox();
             this.txtbNombre = new System.Windows.Forms.TextBox();
             this.txtbDescripcion = new System.Windows.Forms.TextBox();
@@ -44,7 +43,7 @@
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btxAgregar = new System.Windows.Forms.Button();
-            this.txtUrlImagen = new System.Windows.Forms.TextBox();
+            this.btnImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +63,7 @@
             // txtbCodigo
             // 
             this.txtbCodigo.Location = new System.Drawing.Point(112, 34);
+            this.txtbCodigo.MaxLength = 50;
             this.txtbCodigo.Name = "txtbCodigo";
             this.txtbCodigo.Size = new System.Drawing.Size(262, 20);
             this.txtbCodigo.TabIndex = 0;
@@ -151,19 +151,6 @@
             this.lblCategoria.Text = "Categoria";
             this.lblCategoria.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // lblImagen
-            // 
-            this.lblImagen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblImagen.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.lblImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImagen.Location = new System.Drawing.Point(12, 213);
-            this.lblImagen.Name = "lblImagen";
-            this.lblImagen.Size = new System.Drawing.Size(95, 20);
-            this.lblImagen.TabIndex = 10;
-            this.lblImagen.Text = "Imagen";
-            this.lblImagen.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // cboxCategoria
             // 
             this.cboxCategoria.AccessibleDescription = "marcas";
@@ -185,6 +172,7 @@
             // txtbNombre
             // 
             this.txtbNombre.Location = new System.Drawing.Point(112, 65);
+            this.txtbNombre.MaxLength = 50;
             this.txtbNombre.Name = "txtbNombre";
             this.txtbNombre.Size = new System.Drawing.Size(262, 20);
             this.txtbNombre.TabIndex = 1;
@@ -192,6 +180,7 @@
             // txtbDescripcion
             // 
             this.txtbDescripcion.Location = new System.Drawing.Point(113, 95);
+            this.txtbDescripcion.MaxLength = 150;
             this.txtbDescripcion.Name = "txtbDescripcion";
             this.txtbDescripcion.Size = new System.Drawing.Size(261, 20);
             this.txtbDescripcion.TabIndex = 2;
@@ -202,6 +191,7 @@
             this.txtbPrecio.Name = "txtbPrecio";
             this.txtbPrecio.Size = new System.Drawing.Size(262, 20);
             this.txtbPrecio.TabIndex = 3;
+            this.txtbPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbPrecio_KeyPress);
             // 
             // pictureBox
             // 
@@ -237,27 +227,30 @@
             this.btxAgregar.UseVisualStyleBackColor = false;
             this.btxAgregar.Click += new System.EventHandler(this.Agregar_Click);
             // 
-            // txtUrlImagen
+            // btnImagen
             // 
-            this.txtUrlImagen.Location = new System.Drawing.Point(112, 213);
-            this.txtUrlImagen.Name = "txtUrlImagen";
-            this.txtUrlImagen.Size = new System.Drawing.Size(261, 20);
-            this.txtUrlImagen.TabIndex = 6;
+            this.btnImagen.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnImagen.Location = new System.Drawing.Point(275, 254);
+            this.btnImagen.Name = "btnImagen";
+            this.btnImagen.Size = new System.Drawing.Size(108, 23);
+            this.btnImagen.TabIndex = 16;
+            this.btnImagen.Text = "Agregar Imagen";
+            this.btnImagen.UseVisualStyleBackColor = false;
+            this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
             // 
             // AgregarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.pictureBox);
-            this.Controls.Add(this.txtUrlImagen);
             this.Controls.Add(this.btxAgregar);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtbPrecio);
             this.Controls.Add(this.txtbDescripcion);
             this.Controls.Add(this.txtbNombre);
             this.Controls.Add(this.cboxCategoria);
-            this.Controls.Add(this.lblImagen);
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.cboxMarca);
             this.Controls.Add(this.lblMarca);
@@ -285,7 +278,6 @@
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.ComboBox cboxMarca;
         private System.Windows.Forms.Label lblCategoria;
-        private System.Windows.Forms.Label lblImagen;
         private System.Windows.Forms.ComboBox cboxCategoria;
         private System.Windows.Forms.TextBox txtbNombre;
         private System.Windows.Forms.TextBox txtbDescripcion;
@@ -293,6 +285,6 @@
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btxAgregar;
-        private System.Windows.Forms.TextBox txtUrlImagen;
+        private System.Windows.Forms.Button btnImagen;
     }
 }

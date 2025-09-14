@@ -117,6 +117,7 @@
             // 
             this.txtCodigo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtCodigo.Location = new System.Drawing.Point(121, 124);
+            this.txtCodigo.MaxLength = 50;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(191, 20);
             this.txtCodigo.TabIndex = 0;
@@ -125,6 +126,7 @@
             // 
             this.txtNombre.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtNombre.Location = new System.Drawing.Point(121, 153);
+            this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(191, 20);
             this.txtNombre.TabIndex = 1;
@@ -136,6 +138,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(191, 20);
             this.txtPrecio.TabIndex = 4;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // pbxArticulo
             // 

@@ -150,5 +150,14 @@ namespace WinApp
             Articulo selecionado = (Articulo)dgvBuscar.CurrentRow.DataBoundItem;
             CargarImagenArticulo(selecionado);
         }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 48 && e.KeyChar <= 57) || ((int)Keys.Back == e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else { e.Handled = true; }
+        }
     }
 }
