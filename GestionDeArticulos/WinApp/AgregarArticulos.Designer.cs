@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btAgregar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtbCodigo = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -305,6 +305,8 @@
         private System.Windows.Forms.TextBox txtbDescripcion;
         private System.Windows.Forms.TextBox txtbPrecio;
         private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button Agregar;
         private System.Windows.Forms.TextBox txtUrlImagen;
     }
 }
