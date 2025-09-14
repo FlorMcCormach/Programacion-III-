@@ -18,7 +18,7 @@ namespace WinApp
         public AgregarArticulos()
         {
             InitializeComponent();
-            
+
 
         }
 
@@ -38,6 +38,7 @@ namespace WinApp
             {
                 this.articulo = articulo;
                 Text = "Modificar Artículo";
+                btxAgregar.Text = " Modificar";
             }
         }
 
@@ -80,45 +81,10 @@ namespace WinApp
             Close();
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-           
-            try
-            {
-                if (articulo == null)
-                    articulo = new Articulo();
-
-                articulo.CodigoArticulo = txtbCodigo.Text;
-                articulo.NombreArticulo = txtbNombre.Text;
-                articulo.DescripcionArticulo = txtbDescripcion.Text;
-                articulo.PrecioArticulo = decimal.Parse(txtbPrecio.Text);
-                articulo.Marca = (Marca)cboxMarca.SelectedItem;
-                articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
-
-                //consulta para saber si es una modificacion, caso contrario es un alta
-                if (articulo.IdArticulo != 0)
-                {
-                    articuloNegocio.modificar(articulo);                 
-
-                }
-                else
-                {
-                    //si es 0 es un alta
-                }
-
-                Close();
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
         private void Agregar_Click(object sender, EventArgs e)
         {
-            
+
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             ImagenNegocio imagenNegocio = new ImagenNegocio();
             try
@@ -135,17 +101,29 @@ namespace WinApp
                     throw new ArgumentException("El precio debe ser un número válido");
                 }
 
-                Articulo articulo = new Articulo();
-                articulo.CodigoArticulo = txtbCodigo.Text;
-                articulo.NombreArticulo = txtbNombre.Text;
-                articulo.DescripcionArticulo = txtbDescripcion.Text;
-                articulo.PrecioArticulo = precio;
-                articulo.Marca = (Marca)cboxMarca.SelectedItem;
-                articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
-                articuloNegocio.agregarConImagen(articulo, txtUrlImagen.Text);
-                
-                
-                MessageBox.Show("Agregado exitosamente");
+                Articulo nuevoArticulo = new Articulo();
+                nuevoArticulo.CodigoArticulo = txtbCodigo.Text;
+                nuevoArticulo.NombreArticulo = txtbNombre.Text;
+                nuevoArticulo.DescripcionArticulo = txtbDescripcion.Text;
+                nuevoArticulo.PrecioArticulo = precio;
+                nuevoArticulo.Marca = (Marca)cboxMarca.SelectedItem;
+                nuevoArticulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
+                //consulta para saber si es una modificacion, caso contrario es un alta
+                if (this.articulo != null && this.articulo.IdArticulo != 0)
+                {
+                    nuevoArticulo.IdArticulo = this.articulo.IdArticulo;
+                    articuloNegocio.modificar(nuevoArticulo);
+                    MessageBox.Show("Modificado exitosamente");
+
+                }
+                else
+                {
+                    //si es 0 es un alta
+                    articuloNegocio.agregarConImagen(nuevoArticulo, txtUrlImagen.Text);
+                    MessageBox.Show("Agregado exitosamente");
+                }
+
+
                 Close();
             }
             catch (Exception ex)

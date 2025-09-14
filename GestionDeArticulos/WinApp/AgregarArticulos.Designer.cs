@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAceptar = new System.Windows.Forms.Button();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtbCodigo = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -43,22 +42,11 @@
             this.txtbDescripcion = new System.Windows.Forms.TextBox();
             this.txtbPrecio = new System.Windows.Forms.TextBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.btnClose = new System.Windows.Forms.Button();
-            this.Agregar = new System.Windows.Forms.Button();
+            this.btxAgregar = new System.Windows.Forms.Button();
             this.txtUrlImagen = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnAceptar
-            // 
-            this.btnAceptar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAceptar.Location = new System.Drawing.Point(474, 254);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 0;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = false;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // lblCodigo
             // 
@@ -78,7 +66,7 @@
             this.txtbCodigo.Location = new System.Drawing.Point(112, 34);
             this.txtbCodigo.Name = "txtbCodigo";
             this.txtbCodigo.Size = new System.Drawing.Size(262, 20);
-            this.txtbCodigo.TabIndex = 3;
+            this.txtbCodigo.TabIndex = 0;
             // 
             // lblNombre
             // 
@@ -148,7 +136,7 @@
             this.cboxMarca.Location = new System.Drawing.Point(113, 153);
             this.cboxMarca.Name = "cboxMarca";
             this.cboxMarca.Size = new System.Drawing.Size(261, 21);
-            this.cboxMarca.TabIndex = 8;
+            this.cboxMarca.TabIndex = 4;
             // 
             // lblCategoria
             // 
@@ -192,28 +180,28 @@
             this.cboxCategoria.Location = new System.Drawing.Point(112, 184);
             this.cboxCategoria.Name = "cboxCategoria";
             this.cboxCategoria.Size = new System.Drawing.Size(262, 21);
-            this.cboxCategoria.TabIndex = 11;
+            this.cboxCategoria.TabIndex = 5;
             // 
             // txtbNombre
             // 
             this.txtbNombre.Location = new System.Drawing.Point(112, 65);
             this.txtbNombre.Name = "txtbNombre";
             this.txtbNombre.Size = new System.Drawing.Size(262, 20);
-            this.txtbNombre.TabIndex = 12;
+            this.txtbNombre.TabIndex = 1;
             // 
             // txtbDescripcion
             // 
             this.txtbDescripcion.Location = new System.Drawing.Point(113, 95);
             this.txtbDescripcion.Name = "txtbDescripcion";
             this.txtbDescripcion.Size = new System.Drawing.Size(261, 20);
-            this.txtbDescripcion.TabIndex = 13;
+            this.txtbDescripcion.TabIndex = 2;
             // 
             // txtbPrecio
             // 
             this.txtbPrecio.Location = new System.Drawing.Point(112, 127);
             this.txtbPrecio.Name = "txtbPrecio";
             this.txtbPrecio.Size = new System.Drawing.Size(262, 20);
-            this.txtbPrecio.TabIndex = 14;
+            this.txtbPrecio.TabIndex = 3;
             // 
             // pictureBox
             // 
@@ -226,34 +214,35 @@
             this.pictureBox.Size = new System.Drawing.Size(154, 171);
             this.pictureBox.TabIndex = 15;
             this.pictureBox.TabStop = false;
+            // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnClose.Location = new System.Drawing.Point(664, 254);
+            this.btnClose.Location = new System.Drawing.Point(534, 254);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 15;
-            this.btnClose.Text = "Close";
+            this.btnClose.Size = new System.Drawing.Size(108, 23);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Text = "Volver a Menú";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // Agregar
+            // btxAgregar
             // 
-            this.Agregar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.Agregar.Location = new System.Drawing.Point(571, 254);
-            this.Agregar.Name = "Agregar";
-            this.Agregar.Size = new System.Drawing.Size(75, 23);
-            this.Agregar.TabIndex = 16;
-            this.Agregar.Text = "Agregar";
-            this.Agregar.UseVisualStyleBackColor = false;
-            this.Agregar.Click += new System.EventHandler(this.Agregar_Click);
+            this.btxAgregar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btxAgregar.Location = new System.Drawing.Point(403, 254);
+            this.btxAgregar.Name = "btxAgregar";
+            this.btxAgregar.Size = new System.Drawing.Size(108, 23);
+            this.btxAgregar.TabIndex = 7;
+            this.btxAgregar.Text = "Agregar";
+            this.btxAgregar.UseVisualStyleBackColor = false;
+            this.btxAgregar.Click += new System.EventHandler(this.Agregar_Click);
             // 
             // txtUrlImagen
             // 
             this.txtUrlImagen.Location = new System.Drawing.Point(112, 213);
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(261, 20);
-            this.txtUrlImagen.TabIndex = 17;
+            this.txtUrlImagen.TabIndex = 6;
             // 
             // AgregarArticulos
             // 
@@ -262,7 +251,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.txtUrlImagen);
-            this.Controls.Add(this.Agregar);
+            this.Controls.Add(this.btxAgregar);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtbPrecio);
             this.Controls.Add(this.txtbDescripcion);
@@ -277,10 +266,9 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtbCodigo);
             this.Controls.Add(this.lblCodigo);
-            this.Controls.Add(this.btnAceptar);
             this.MinimumSize = new System.Drawing.Size(634, 489);
             this.Name = "AgregarArticulos";
-            this.Text = "AgregarArticulos";
+            this.Text = "Agregar Articulos";
             this.Load += new System.EventHandler(this.AgregarArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -289,8 +277,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.TextBox txtbCodigo;
         private System.Windows.Forms.Label lblNombre;
@@ -306,7 +292,7 @@
         private System.Windows.Forms.TextBox txtbPrecio;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button Agregar;
+        private System.Windows.Forms.Button btxAgregar;
         private System.Windows.Forms.TextBox txtUrlImagen;
     }
 }

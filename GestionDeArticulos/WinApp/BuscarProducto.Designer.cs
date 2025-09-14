@@ -36,13 +36,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtMarca = new System.Windows.Forms.TextBox();
-            this.txtCategoria = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvBuscar = new System.Windows.Forms.DataGridView();
+            this.cboxMarca = new System.Windows.Forms.ComboBox();
+            this.cboxCategoria = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscar)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +56,7 @@
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(50, 13);
             this.lblCodigo.TabIndex = 0;
-            this.lblCodigo.Text = "Codigo:";
+            this.lblCodigo.Text = "Código:";
             // 
             // lblNombre
             // 
@@ -111,7 +111,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(311, 33);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Busqueda de Articulo";
+            this.label1.Text = "Búsqueda de Artículo";
             // 
             // txtCodigo
             // 
@@ -119,7 +119,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(121, 124);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(191, 20);
-            this.txtCodigo.TabIndex = 6;
+            this.txtCodigo.TabIndex = 0;
             // 
             // txtNombre
             // 
@@ -127,23 +127,7 @@
             this.txtNombre.Location = new System.Drawing.Point(121, 153);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(191, 20);
-            this.txtNombre.TabIndex = 7;
-            // 
-            // txtMarca
-            // 
-            this.txtMarca.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtMarca.Location = new System.Drawing.Point(121, 183);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(191, 20);
-            this.txtMarca.TabIndex = 8;
-            // 
-            // txtCategoria
-            // 
-            this.txtCategoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtCategoria.Location = new System.Drawing.Point(121, 213);
-            this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(191, 20);
-            this.txtCategoria.TabIndex = 9;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtPrecio
             // 
@@ -151,7 +135,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(121, 241);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(191, 20);
-            this.txtPrecio.TabIndex = 10;
+            this.txtPrecio.TabIndex = 4;
             // 
             // pbxArticulo
             // 
@@ -169,11 +153,11 @@
             this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(234, 349);
+            this.btnCancelar.Location = new System.Drawing.Point(173, 349);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 15;
-            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(98, 23);
+            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.Text = "Volver a Menú";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -185,8 +169,8 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Location = new System.Drawing.Point(56, 349);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 14;
+            this.btnBuscar.Size = new System.Drawing.Size(98, 23);
+            this.btnBuscar.TabIndex = 5;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -201,18 +185,54 @@
             this.dgvBuscar.TabIndex = 16;
             this.dgvBuscar.SelectionChanged += new System.EventHandler(this.dgvBuscar_SelectionChanged);
             // 
+            // cboxMarca
+            // 
+            this.cboxMarca.AccessibleDescription = "marcas";
+            this.cboxMarca.FormattingEnabled = true;
+            this.cboxMarca.Items.AddRange(new object[] {
+            "Samsung",
+            "Iphone",
+            "Tcl",
+            "Motorola",
+            "Xiami",
+            "Alcatel",
+            "Google",
+            "Otros"});
+            this.cboxMarca.Location = new System.Drawing.Point(121, 180);
+            this.cboxMarca.Name = "cboxMarca";
+            this.cboxMarca.Size = new System.Drawing.Size(191, 21);
+            this.cboxMarca.TabIndex = 17;
+            // 
+            // cboxCategoria
+            // 
+            this.cboxCategoria.AccessibleDescription = "marcas";
+            this.cboxCategoria.FormattingEnabled = true;
+            this.cboxCategoria.Items.AddRange(new object[] {
+            "Samsung",
+            "Iphone",
+            "Tcl",
+            "Motorola",
+            "Xiami",
+            "Alcatel",
+            "Google",
+            "Otros"});
+            this.cboxCategoria.Location = new System.Drawing.Point(121, 207);
+            this.cboxCategoria.Name = "cboxCategoria";
+            this.cboxCategoria.Size = new System.Drawing.Size(191, 21);
+            this.cboxCategoria.TabIndex = 18;
+            // 
             // BuscarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.cboxCategoria);
+            this.Controls.Add(this.cboxMarca);
             this.Controls.Add(this.dgvBuscar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.txtPrecio);
-            this.Controls.Add(this.txtCategoria);
-            this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label1);
@@ -242,12 +262,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtMarca;
-        private System.Windows.Forms.TextBox txtCategoria;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.PictureBox pbxArticulo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvBuscar;
+        private System.Windows.Forms.ComboBox cboxMarca;
+        private System.Windows.Forms.ComboBox cboxCategoria;
     }
 }

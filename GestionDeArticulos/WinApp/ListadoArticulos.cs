@@ -54,7 +54,7 @@ namespace WinApp
             Articulo seleccionado;
             try
             {
-                DialogResult respuesta = MessageBox.Show("¿Eliminar de la Base de datos?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult respuesta = MessageBox.Show("¿Está seguro que desea eliminar este artículo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
                     seleccionado = (Articulo)dgvListadoArticulo.CurrentRow.DataBoundItem;
@@ -75,6 +75,11 @@ namespace WinApp
             AgregarArticulos modificarArticulos = new AgregarArticulos();
             modificarArticulos.ShowDialog();
             
+        }
+
+        private void btnVolverMenu_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

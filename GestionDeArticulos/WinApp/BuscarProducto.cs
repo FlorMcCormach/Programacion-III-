@@ -12,24 +12,44 @@ using Negocio;
 
 namespace WinApp
 {
-    
+
     public partial class BuscarProducto : Form
     {
         private List<Articulo> listaArticulo;
+        private object txtMarca;
+
         public BuscarProducto()
         {
             InitializeComponent();
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+
+            try
+            {
+                cboxCategoria.DataSource = categoriaNegocio.listar();
+                cboxCategoria.ValueMember = "IdCategoria";
+                cboxCategoria.DisplayMember = "DescripcionCategoria";
+
+                cboxMarca.DataSource = marcaNegocio.listar();
+                cboxMarca.ValueMember = "IdMarca";
+                cboxMarca.DisplayMember = "MarcaDescripcion";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
+
 
         private void BuscarProducto_Load(object sender, EventArgs e)
         {
 
-            txtCategoria.Text = "";
+            cboxCategoria.Text = "";
             txtCodigo.Text = "";
-            txtMarca.Text = "";
+            cboxMarca.Text = "";
             txtNombre.Text = "";
             txtPrecio.Text = "";
-            
+
 
         }
 
@@ -46,7 +66,7 @@ namespace WinApp
                 {
                     pbxArticulo.Load(articulo.Imagenes[1].ImagenUrl); // Segunda imagen
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     pbxArticulo.Load("https://dummyimage.com/400x400/cccccc/666666.png?text=Sin+Imagen");
                 }
@@ -57,7 +77,7 @@ namespace WinApp
                 {
                     pbxArticulo.Load(articulo.Imagenes[0].ImagenUrl); // Primera imagen
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     pbxArticulo.Load("https://dummyimage.com/400x400/cccccc/666666.png?text=Sin+Imagen");
                 }
@@ -78,12 +98,12 @@ namespace WinApp
 
                 // inicializo el objeto anidado
                 articulo.Categoria = new Categoria();
-                articulo.Categoria.DescripcionCategoria = txtCategoria.Text;
+                articulo.Categoria.DescripcionCategoria = cboxCategoria.Text;
                 articulo.CodigoArticulo = txtCodigo.Text;
 
                 // inicializo el objeto anidado
                 articulo.Marca = new Marca();
-                articulo.Marca.MarcaDescripcion = txtMarca.Text;
+                articulo.Marca.MarcaDescripcion = cboxMarca.Text;
                 articulo.NombreArticulo = txtNombre.Text;
 
                 // se realiza la conversion a decimal
@@ -97,7 +117,7 @@ namespace WinApp
                 {
                     articulo.PrecioArticulo = precio;
                 }
-                
+
                 else
                 {
                     MessageBox.Show("Precio no es válido. Ingresá un precio.");
@@ -130,7 +150,5 @@ namespace WinApp
             Articulo selecionado = (Articulo)dgvBuscar.CurrentRow.DataBoundItem;
             CargarImagenArticulo(selecionado);
         }
-
-
     }
 }

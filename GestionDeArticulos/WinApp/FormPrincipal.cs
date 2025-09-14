@@ -28,5 +28,13 @@ namespace WinApp
             BuscarProducto ventanaBuscarProducto = new BuscarProducto();
             ventanaBuscarProducto.ShowDialog();
         }
+
+        private void btnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            AgregarArticulos agregarArticulos = new AgregarArticulos();
+            agregarArticulos.ShowDialog();
+        }
+ 
+
     }
 }
