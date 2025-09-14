@@ -19,11 +19,24 @@ namespace WinApp
             InitializeComponent();
         }
 
-        private void ListadoArticulos_Load(object sender, EventArgs e)
+        private void cargar()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            dgvListadoArticulo.DataSource = negocio.listar();
-            dgvListadoArticulo.Columns["IdArticulo"].Visible = false;
+            try
+            {
+                dgvListadoArticulo.DataSource = negocio.listar();
+                dgvListadoArticulo.Columns["IdArticulo"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        private void ListadoArticulos_Load(object sender, EventArgs e)
+        {
+            cargar();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -31,12 +44,29 @@ namespace WinApp
             Articulo seleccionado;
             seleccionado = (Articulo)dgvListadoArticulo.CurrentRow.DataBoundItem;
             AgregarArticulos modificarArticulos = new AgregarArticulos(seleccionado);  
-            modificarArticulos.ShowDialog();    
+            modificarArticulos.ShowDialog();
+            cargar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
+            ArticuloNegocio articulo = new ArticuloNegocio();
+            Articulo seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Eliminar de la Base de datos?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dgvListadoArticulo.CurrentRow.DataBoundItem;
+                    articulo.eliminar(seleccionado.IdArticulo);
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString()) ;
+            }
+            
         }
     }
 }
