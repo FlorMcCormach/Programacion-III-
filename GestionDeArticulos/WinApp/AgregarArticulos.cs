@@ -118,26 +118,33 @@ namespace WinApp
 
         private void Agregar_Click(object sender, EventArgs e)
         {
-            Articulo articulo = new Articulo();
+            
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
             try
             {
-                
+
                 //articulo = new Articulo();
-                
+
+                if (string.IsNullOrWhiteSpace(txtbCodigo.Text) || string.IsNullOrWhiteSpace(txtbNombre.Text))
+                {
+                    throw new ArgumentException("Código y nombre son requeridos");
+                }
+                if (!decimal.TryParse(txtbPrecio.Text, out decimal precio))
+                {
+                    throw new ArgumentException("El precio debe ser un número válido");
+                }
+
+                Articulo articulo = new Articulo();
                 articulo.CodigoArticulo = txtbCodigo.Text;
                 articulo.NombreArticulo = txtbNombre.Text;
                 articulo.DescripcionArticulo = txtbDescripcion.Text;
-                articulo.PrecioArticulo = decimal.Parse(txtbPrecio.Text);
+                articulo.PrecioArticulo = precio;
                 articulo.Marca = (Marca)cboxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
-                articuloNegocio.agregar(articulo);
-                if(txtUrlImagen.Text == "")
-                {
-                    Imagen auxImagen = new Imagen();
-                    auxImagen.IdArticulo = articulo.IdArticulo;
-
-                }
+                articuloNegocio.agregarConImagen(articulo, txtUrlImagen.Text);
+                
+                
                 MessageBox.Show("Agregado exitosamente");
                 Close();
             }

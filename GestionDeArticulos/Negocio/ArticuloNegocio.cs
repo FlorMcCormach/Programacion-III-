@@ -180,11 +180,48 @@ namespace Negocio
             }
         }
 
-        public void agregar(Articulo articulo)
+        public void agregarConImagen(Articulo articulo, string urlImagen)
         {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                //  Una sola consulta que agraga el articulo + la Url de la imagen
+                string consulta = @" DECLARE @IdNuevoArticulo INT; INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES (@codigoArticulo, @NombreArticulo, @Descripcionarticulo, @IdMarca, @IdCategoria, @Precio);SET @IdNuevoArticulo = SCOPE_IDENTITY();";
 
+                // Solo agregar la parte de imagen si hay URL
+                if (!string.IsNullOrWhiteSpace(urlImagen))
+                {
+                    consulta += @"INSERT INTO IMAGENES (IdArticulo, ImagenUrl)  VALUES (@IdNuevoArticulo, @url);";
+                }
+
+                accesoDatos.setearConsulta(consulta);
+
+                // Parámetros del artículo
+                accesoDatos.setearParametros("@codigoArticulo", articulo.CodigoArticulo);
+                accesoDatos.setearParametros("@NombreArticulo", articulo.NombreArticulo);
+                accesoDatos.setearParametros("@Descripcionarticulo", articulo.DescripcionArticulo);
+                accesoDatos.setearParametros("@IdMarca", articulo.Marca.IdMarca);
+                accesoDatos.setearParametros("@IdCategoria", articulo.Categoria.IdCategoria);
+                accesoDatos.setearParametros("@Precio", articulo.PrecioArticulo);
+
+                // Parámetro de imagen solo si existe
+                if (!string.IsNullOrWhiteSpace(urlImagen))
+                {
+                    accesoDatos.setearParametros("@url", urlImagen);
+                }
+
+                
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
         }
-
 
         public void modificar(Articulo articulo)
 		{

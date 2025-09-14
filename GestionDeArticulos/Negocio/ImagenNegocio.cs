@@ -25,5 +25,7 @@ namespace Negocio
                 throw ex;
             }
         }
+
+
     }
 }

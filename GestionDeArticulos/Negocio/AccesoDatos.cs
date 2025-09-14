@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Negocio
 {
@@ -68,6 +69,7 @@ namespace Negocio
         {
             if (lector != null)
                 lector.Close();
+
             conexion.Close();
         }
     }
