@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Negocio
 {
@@ -21,7 +22,7 @@ namespace Negocio
         public AccesoDatos()
         {
             conexion = new SqlConnection("server=.\\SQLEXPRESS01; database=CATALOGO_P3_DB; integrated security=true");
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+            //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
             comando = new SqlCommand();
         }
         public void setearConsulta(string consulta)
@@ -68,6 +69,7 @@ namespace Negocio
         {
             if (lector != null)
                 lector.Close();
+
             conexion.Close();
         }
     }

@@ -25,7 +25,8 @@ namespace WinApp
 
         private void btnBuscarArticulo_Click(object sender, EventArgs e)
         {
-
+            BuscarProducto ventanaBuscarProducto = new BuscarProducto();
+            ventanaBuscarProducto.ShowDialog();
         }
     }
 }

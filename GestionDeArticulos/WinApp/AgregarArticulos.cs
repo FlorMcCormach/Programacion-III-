@@ -18,13 +18,27 @@ namespace WinApp
         public AgregarArticulos()
         {
             InitializeComponent();
+            
+
         }
 
         public AgregarArticulos(Articulo articulo)
         {
             InitializeComponent();
-            this.articulo = articulo;
-            Text = "Modificar Artículo";
+            if (articulo == null)
+            {
+                this.Text = "Agregar Artículo";
+                txtbCodigo.Text = " ";
+                txtbDescripcion.Text = " ";
+                txtbNombre.Text = " ";
+                txtbPrecio.Text = "";
+                txtUrlImagen.Text = " ";
+            }
+            else
+            {
+                this.articulo = articulo;
+                Text = "Modificar Artículo";
+            }
         }
 
         private void AgregarArticulos_Load(object sender, EventArgs e)
@@ -60,40 +74,86 @@ namespace WinApp
             }
         }
 
-        private void btAgregar_Click(object sender, EventArgs e)
+
+        private void btnClose_Click(object sender, EventArgs e)
         {
-
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-
-            try
-            {
-                if(articulo == null)
-                    articulo = new Articulo();
-
-
-                //consulta para saber si es una modificacion, caso contrario es un alta
-                if (articulo.IdArticulo > 0)
-                {
-                    int idArticulo;
-                    articuloNegocio.modificar(articulo);
-                    idArticulo = articulo.IdArticulo;
-
-                }
-                else 
-                { 
-                   //si es 0 es un alta
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            
             Close();
         }
 
-     
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+           
+            try
+            {
+                if (articulo == null)
+                    articulo = new Articulo();
+
+                articulo.CodigoArticulo = txtbCodigo.Text;
+                articulo.NombreArticulo = txtbNombre.Text;
+                articulo.DescripcionArticulo = txtbDescripcion.Text;
+                articulo.PrecioArticulo = decimal.Parse(txtbPrecio.Text);
+                articulo.Marca = (Marca)cboxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
+
+                //consulta para saber si es una modificacion, caso contrario es un alta
+                if (articulo.IdArticulo != 0)
+                {
+                    articuloNegocio.modificar(articulo);                 
+
+                }
+                else
+                {
+                    //si es 0 es un alta
+                }
+
+                Close();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void Agregar_Click(object sender, EventArgs e)
+        {
+            
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
+            try
+            {
+
+                //articulo = new Articulo();
+
+                if (string.IsNullOrWhiteSpace(txtbCodigo.Text) || string.IsNullOrWhiteSpace(txtbNombre.Text))
+                {
+                    throw new ArgumentException("Código y nombre son requeridos");
+                }
+                if (!decimal.TryParse(txtbPrecio.Text, out decimal precio))
+                {
+                    throw new ArgumentException("El precio debe ser un número válido");
+                }
+
+                Articulo articulo = new Articulo();
+                articulo.CodigoArticulo = txtbCodigo.Text;
+                articulo.NombreArticulo = txtbNombre.Text;
+                articulo.DescripcionArticulo = txtbDescripcion.Text;
+                articulo.PrecioArticulo = precio;
+                articulo.Marca = (Marca)cboxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
+                articuloNegocio.agregarConImagen(articulo, txtUrlImagen.Text);
+                
+                
+                MessageBox.Show("Agregado exitosamente");
+                Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Ocurrió un error: " + ex.Message);
+            }
+        }
     }
 }
+
