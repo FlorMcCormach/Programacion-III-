@@ -102,6 +102,31 @@ namespace WinApp
             }
         }
 
+        private void Agregar_Click(object sender, EventArgs e)
+        {
+            Articulo articulo = new Articulo();
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            try
+            {
+                
+                //articulo = new Articulo();
+                
+                articulo.CodigoArticulo = txtbCodigo.Text;
+                articulo.NombreArticulo = txtbNombre.Text;
+                articulo.DescripcionArticulo = txtbDescripcion.Text;
+                articulo.PrecioArticulo = decimal.Parse(txtbPrecio.Text);
+                articulo.Marca = (Marca)cboxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
+
+                MessageBox.Show("Agregado exitosamente");
+                Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Ocurrió un error: " + ex.Message);
+            }
+        }
     }
 }
 

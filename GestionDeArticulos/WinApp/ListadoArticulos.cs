@@ -71,8 +71,10 @@ namespace WinApp
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            AltaArticulo alta = new AltaArticulo();
-            alta.ShowDialog();
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvListadoArticulo.CurrentRow.DataBoundItem;
+            AgregarArticulos modificarArticulos = new AgregarArticulos(seleccionado);
+            modificarArticulos.ShowDialog();
         }
     }
 }

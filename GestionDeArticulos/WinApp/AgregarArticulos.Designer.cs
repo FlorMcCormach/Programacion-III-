@@ -43,6 +43,7 @@
             this.txtbDescripcion = new System.Windows.Forms.TextBox();
             this.txtbPrecio = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.Agregar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -214,7 +215,7 @@
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnClose.Location = new System.Drawing.Point(567, 254);
+            this.btnClose.Location = new System.Drawing.Point(664, 254);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 15;
@@ -222,11 +223,23 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // Agregar
+            // 
+            this.Agregar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Agregar.Location = new System.Drawing.Point(571, 254);
+            this.Agregar.Name = "Agregar";
+            this.Agregar.Size = new System.Drawing.Size(75, 23);
+            this.Agregar.TabIndex = 16;
+            this.Agregar.Text = "Agregar";
+            this.Agregar.UseVisualStyleBackColor = false;
+            this.Agregar.Click += new System.EventHandler(this.Agregar_Click);
+            // 
             // AgregarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Agregar);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtbPrecio);
             this.Controls.Add(this.txtbDescripcion);
@@ -268,5 +281,6 @@
         private System.Windows.Forms.TextBox txtbDescripcion;
         private System.Windows.Forms.TextBox txtbPrecio;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button Agregar;
     }
 }
