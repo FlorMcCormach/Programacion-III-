@@ -68,5 +68,11 @@ namespace WinApp
             }
             
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            AltaArticulo alta = new AltaArticulo();
+            alta.ShowDialog();
+        }
     }
 }
