@@ -18,13 +18,27 @@ namespace WinApp
         public AgregarArticulos()
         {
             InitializeComponent();
+            
+
         }
 
         public AgregarArticulos(Articulo articulo)
         {
             InitializeComponent();
-            this.articulo = articulo;
-            Text = "Modificar Artículo";
+            if (articulo == null)
+            {
+                this.Text = "Agregar Artículo";
+                txtbCodigo.Text = " ";
+                txtbDescripcion.Text = " ";
+                txtbNombre.Text = " ";
+                txtbPrecio.Text = "";
+                txtUrlImagen.Text = " ";
+            }
+            else
+            {
+                this.articulo = articulo;
+                Text = "Modificar Artículo";
+            }
         }
 
         private void AgregarArticulos_Load(object sender, EventArgs e)
@@ -117,7 +131,13 @@ namespace WinApp
                 articulo.PrecioArticulo = decimal.Parse(txtbPrecio.Text);
                 articulo.Marca = (Marca)cboxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
+                articuloNegocio.agregar(articulo);
+                if(txtUrlImagen.Text == "")
+                {
+                    Imagen auxImagen = new Imagen();
+                    auxImagen.IdArticulo = articulo.IdArticulo;
 
+                }
                 MessageBox.Show("Agregado exitosamente");
                 Close();
             }

@@ -44,6 +44,7 @@
             this.txtbPrecio = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.Agregar = new System.Windows.Forms.Button();
+            this.txtUrlImagen = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -234,11 +235,19 @@
             this.Agregar.UseVisualStyleBackColor = false;
             this.Agregar.Click += new System.EventHandler(this.Agregar_Click);
             // 
+            // txtUrlImagen
+            // 
+            this.txtUrlImagen.Location = new System.Drawing.Point(112, 213);
+            this.txtUrlImagen.Name = "txtUrlImagen";
+            this.txtUrlImagen.Size = new System.Drawing.Size(261, 20);
+            this.txtUrlImagen.TabIndex = 17;
+            // 
             // AgregarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtUrlImagen);
             this.Controls.Add(this.Agregar);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtbPrecio);
@@ -282,5 +291,6 @@
         private System.Windows.Forms.TextBox txtbPrecio;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button Agregar;
+        private System.Windows.Forms.TextBox txtUrlImagen;
     }
 }
